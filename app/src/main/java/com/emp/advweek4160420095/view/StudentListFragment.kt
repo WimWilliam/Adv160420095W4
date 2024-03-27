@@ -28,7 +28,6 @@ class StudentListFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.refresh()
 
@@ -36,6 +35,13 @@ class StudentListFragment : Fragment() {
         binding.recView.adapter = studentListAdapter
 
         observeViewModel()
+        binding.refreshLayout.setOnRefreshListener {
+            binding.recView.visibility = View.GONE
+            binding.txtEror.visibility = View.GONE
+            binding.progressload.visibility = View.VISIBLE
+            viewModel.refresh()
+            binding.refreshLayout.isRefreshing = false
+        }
     }
 
     fun observeViewModel() {

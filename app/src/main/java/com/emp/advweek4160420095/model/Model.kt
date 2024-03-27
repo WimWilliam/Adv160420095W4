@@ -1,9 +1,14 @@
 package com.emp.advweek4160420095.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Student(
     val id:String?,
+    @SerializedName("student_name")
     val name:String?,
-    val dob:String?,
+    @SerializedName("birth_of_date")
+    val bod:String?,
     val phone:String?,
+    @SerializedName("photo_url")
     val photoUrl:String?
 )
