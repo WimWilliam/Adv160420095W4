@@ -1,6 +1,7 @@
 package com.emp.advweek4160420095.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,10 @@ import com.emp.advweek4160420095.R
 import com.emp.advweek4160420095.databinding.FragmentStudentDetailBinding
 import com.example.advweek4160420095.viewmodel.DetailViewModel
 import com.google.android.material.textfield.TextInputEditText
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 
 class StudentDetailFragment : Fragment() {
@@ -39,10 +44,10 @@ class StudentDetailFragment : Fragment() {
                         Log.d("Messages", "five seconds")
                         MainActivity.showNotification(student.name.toString(),
                             "A new notification created",
-                            R.drawable.baseline_person_add_24)
+                            R.drawable.baseline_person_24)
                     }
             }
-        }
+        })
 
     }
 }
